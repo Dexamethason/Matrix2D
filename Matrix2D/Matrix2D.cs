@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MatrixLib
 {
-    public class Matrix2D
+    public class Matrix2D : IEquatable<Matrix2D>
     {
         public int A { get; init; }
         public int B { get; init; }
@@ -31,7 +31,27 @@ namespace MatrixLib
 
         public override string ToString() => $"[[{A}, {B}], [{C}, {D}]] ";
 
+        public bool Equals(Matrix2D? other)
+        {
+            if (other is null)
+                return false;
+            if (ReferenceEquals(this, other)) return true;
+            return A == other.A &&
+                B == other.B &&
+                C == other.C &&
+                D == other.D;
+        }
+        public override bool Equals(object? obj)
+        {
+            if (obj is null) return false;
+            if (obj is not Matrix2D) return false;
+            return Equals(obj as Matrix2D);
+        }
 
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
 
 
     }
