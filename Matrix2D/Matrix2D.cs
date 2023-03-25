@@ -13,6 +13,9 @@ namespace MatrixLib
         public int C { get; init; }
         public int D { get; init; }
 
+        public static  Matrix2D Zero { get; } = new (0,0,0,0);
+        public static  Matrix2D Id { get; } = new ();
+
         public Matrix2D(int a, int b, int c, int d)
         {
             A = a;
@@ -25,6 +28,9 @@ namespace MatrixLib
         {
 
         }
+
+        public override string ToString() => $"[[{A}, {B}], [{C}, {D}]] ";
+
 
 
 
