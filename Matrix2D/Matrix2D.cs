@@ -48,10 +48,7 @@ namespace MatrixLib
             return Equals(obj as Matrix2D);
         }
 
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
+        public override int GetHashCode() => HashCode.Combine(A, B, C, D);
 
 
     }
