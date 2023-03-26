@@ -61,5 +61,32 @@ namespace MatrixLib
         {
             return !(left == right);
         }
+        public static Matrix2D operator +(Matrix2D m1, Matrix2D m2)
+        {
+            return new Matrix2D(m1.A + m2.A, m1.B + m2.B, m1.C + m2.C, m1.D + m2.D);
+            /*
+             return new (left.A + right.A,
+                         left.B + right.B,
+                         left.C + right.C,
+                         left.D + right.D);
+             */
+        }
+        public static Matrix2D operator -(Matrix2D m1, Matrix2D m2)
+        {
+            return new Matrix2D(m1.A - m2.A, m1.B - m2.B, m1.C - m2.C, m1.D - m2.D);
+        }
+        public static Matrix2D operator *(Matrix2D m1, Matrix2D m2)
+        {
+            return new Matrix2D(m1.A * m2.A + m1.B * m2.C,
+                                m1.A * m2.B + m1.B * m2.D,
+                                m1.C * m2.A + m1.D * m2.C,
+                                m1.C * m2.B + m1.D * m2.D);
+        }
+        public static Matrix2D Parse(string s)
+        {
+            var a = s.Split(new string[] { "[", "]", "[", "]", ",", " " }, StringSplitOptions.RemoveEmptyEntries);
+            return new Matrix2D(int.Parse(a[0]), int.Parse(a[1]), int.Parse(a[2]), int.Parse(a[3]));
+        }
+
     }
 }
